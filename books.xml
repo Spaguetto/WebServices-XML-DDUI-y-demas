@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+    <book>
+        <title>Cien años de Soledad</title>
+        <author>Gabriel Garcia Marques</autor>
+    </book>
+    <book>
+        <title>Satanas</title>
+        <author>Mario mendoza</autor>
+    </book>
+    <!-- Otros libros o cualquier cosa que desee -->
+</books>

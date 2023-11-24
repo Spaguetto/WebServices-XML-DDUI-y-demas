@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<definitions name="BookService"
+    targetNamespace="http://localhost:3000/books?wsdl"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://localhost:3000/books"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <message name="getBookRequest"/>
+    <message name="getBookResponse">
+        <part name="title" type="xsd:string"/>
+        <part name="author" type="xsd:string"/>
+    </message>
+
+    <portType name="BookServicePortType">
+        <operation name="getBook">
+            <input message="tns:getBookRequest"/>
+            <output message="tns:getBookResponse"/>
+        </operation>
+    </portType>
+
+    <binding name="BookServiceBinding" type="tns:BookServicePortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getBook">
+            <soap:operation soapAction="getBook"/>
+            <input>
+                <soap:body use="encoded" namespace="urn:examples:books" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="urn:examples:books" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name="BookService">
+        <port name="BookServicePort" binding="tns:BookServiceBinding">
+            <soap:address location="http://localhost:3000/books"/>
+        </port>
+    </service>
+</definitions>
